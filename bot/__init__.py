@@ -267,11 +267,7 @@ EQUAL_SPLITS = EQUAL_SPLITS.lower() == 'true'
 MEDIA_GROUP = environ.get('MEDIA_GROUP', '')
 MEDIA_GROUP = MEDIA_GROUP.lower() == 'true'
 
-SERVER_PORT = environ.get('SERVER_PORT', '')
-if len(SERVER_PORT) == 0:
-    SERVER_PORT = 80
-else:
-    SERVER_PORT = int(SERVER_PORT)
+PORT = environ.get('PORT', '')
 
 BASE_URL = environ.get('BASE_URL', '').rstrip("/")
 if len(BASE_URL) == 0:
@@ -351,7 +347,7 @@ if ospath.exists('list_drives.txt'):
                 INDEX_URLS.append('')
 
 if BASE_URL:
-    Popen(f"gunicorn web.wserver:app --bind 0.0.0.0:{SERVER_PORT}", shell=True)
+    Popen(f"gunicorn web.wserver:app --bind 0.0.0.0:{PORT}", shell=True)
 
 srun(["qbittorrent-nox", "-d", "--profile=."])
 if not ospath.exists('.netrc'):
