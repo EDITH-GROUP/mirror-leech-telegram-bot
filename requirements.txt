@@ -15,6 +15,7 @@ google-auth-httplib2
 google-auth-oauthlib
 gunicorn
 git+https://github.com/zevtyardt/lk21.git
+heroku3
 httpx
 lxml
 motor
